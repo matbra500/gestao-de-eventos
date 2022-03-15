@@ -76,6 +76,9 @@ export const AuthProvider = ({ children }: AuthProps) => {
           },
         });
         history.push("/dashboard");
+        setTimeout(() => {
+          localStorage.clear();
+        }, 1000 * 60 * 60);
       })
       .catch((_) => {
         toast({

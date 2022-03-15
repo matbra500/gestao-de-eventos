@@ -40,6 +40,9 @@ const Header = () => {
         alignItems={"center"}
         boxShadow="-1px 8px 36px -5px #d9d9d9"
         bg="white"
+        position={'sticky'}
+        top='0'
+        zIndex={'sticky'}
       >
         <Heading
           transition={"0.5s"}

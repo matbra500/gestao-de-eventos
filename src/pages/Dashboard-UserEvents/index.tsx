@@ -3,20 +3,14 @@ import Card from "../../components/Card";
 import { useEvents } from "../../providers/Events";
 import { Flex, Text, Center, Button } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
-import { useEffect } from "react";
 import { Redirect } from "react-router-dom";
 
 const DashboardUserEvents = () => {
-  const { userEvents, getUserEvents } = useEvents();
+  const { userEvents } = useEvents();
   const token = localStorage.getItem("@Eventify:token") || "";
-  const userId = Number(localStorage.getItem("@Eventify:userId"));
 
   const userName = localStorage.getItem("@Eventify:userName") || "";
   const history = useHistory();
-
-  useEffect(() => {
-    getUserEvents(token, userId);
-  });
 
   if (!token) {
     return <Redirect to={"/login"} />;

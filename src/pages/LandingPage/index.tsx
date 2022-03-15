@@ -34,7 +34,7 @@ const LandingPage = () => {
               maxW={["80vw", "40vw"]}
               textAlign="center"
               fontSize={["1.2rem", "1.5rem"]}
-              fontWeight={["500", "600"]}
+              fontWeight="bold"
             >
               Eventify, a melhor plataforma para você participar de seus eventos
               profissionais e acadêmicos favoritos, de forma simples!

@@ -61,10 +61,6 @@ const Card = ({
           bg="gray.100"
           borderRadius={"20px"}
           m="20px"
-          _hover={{
-            transform: "scale(1.03)",
-            transition: "0.3s",
-          }}
         >
           <Flex
             borderRadius={"20px 20px 0 0"}
@@ -73,11 +69,14 @@ const Card = ({
             bg="blue.100"
             justifyContent={"center"}
             p="10px"
+            alignItems={"center"}
           >
             <Image maxW="100%" maxH="100%" src={imageLink} alt="eventImage" />
           </Flex>
           <VStack mt="8px" textAlign={"center"} spacing={"7px"}>
-            <Text maxW="90%">{title}</Text>
+            <Text color="blue.200" fontWeight={"bold"} maxW="90%">
+              {title}
+            </Text>
             <Text>Organizador: {hostName}</Text>
             <Text>Onde: {place}</Text>
             <Flex w="100%" justifyContent={"space-evenly"}>

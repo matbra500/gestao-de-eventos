@@ -17,8 +17,8 @@ interface EventsProviderData {
   buyEventTicket: (event: EventData) => void;
   allEvents: EventData[];
   userEvents: EventData[];
-  getUserEvents: (token: string, userId: number) => void;
-  getAllEvents: (token: string) => void;
+  getUserEvents: (userId: number) => void;
+  getAllEvents: () => void;
   deleteEvent: (eventId: string) => void;
 }
 
@@ -51,51 +51,27 @@ export const EventsProvider = ({ children }: EventsProps) => {
   const [userEvents, setUserEvents] = useState<EventData[]>([]);
 
   useEffect(() => {
-    api
-      .get("/events", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        setAllEvents(response.data);
-      });
+    api.get("/events").then((response) => {
+      setAllEvents(response.data);
+    });
   }, [token, allEvents]);
 
   useEffect(() => {
-    api
-      .get(`/eventsBought?userId=${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        setUserEvents(response.data);
-      });
+    api.get(`/eventsBought?userId=${userId}`).then((response) => {
+      setUserEvents(response.data);
+    });
   }, [token, userId, userEvents]);
 
-  const getAllEvents = (token: string) => {
-    api
-      .get("/events", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        setAllEvents(response.data);
-      });
+  const getAllEvents = () => {
+    api.get("/events").then((response) => {
+      setAllEvents(response.data);
+    });
   };
 
-  const getUserEvents = (token: string, userId: number) => {
-    api
-      .get(`/eventsBought?userId=${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        setUserEvents(response.data);
-      });
+  const getUserEvents = (userId: number) => {
+    api.get(`/eventsBought?userId=${userId}`).then((response) => {
+      setUserEvents(response.data);
+    });
   };
 
   const buyEventTicket = (event: EventData) => {
